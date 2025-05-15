@@ -1,0 +1,155 @@
+/* Estilo geral do corpo */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+/* Cabeçalho com fundo verde escuro */
+/* Cabeçalho */
+header {
+  background-color: #00695c;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* Topo da escola com centralização */
+.topo-escola {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  background-color: #01564c;
+  text-align: left;
+}
+
+
+.logo-escola {
+  width: 100px;
+  height: auto;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+
+.titulo-escola {
+  text-align: center;
+}
+
+
+/* Logo da escola */
+.logo-escola {
+  width: 100px;
+  height: auto;
+  text-align: left;
+}
+
+/* Informações ao lado da logo */
+.info-escola {
+  max-width: 600px;
+  text-align: center;
+  color: white;
+}
+
+
+.info-escola h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+.info-escola p {
+  margin: 10px 0 20px;
+}
+
+/* Botões */
+.contatos {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.contatos a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.whatsapp {
+  background-color: #25D366;
+}
+
+.instagram {
+  background-color: #C13584;
+}
+
+
+/* Barra de navegação */
+.navbar {
+  background-color: #2e8b57;
+  overflow: hidden;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  background-color: #1e6847;
+}
+
+/* Espaço principal abaixo da barra */
+main {
+  padding: 60px 20px 20px;
+  text-align: center;
+}
+
+/* Formulários de login */
+form {
+  margin: 50px auto;
+  padding: 20px;
+  max-width: 300px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+form input {
+  margin-bottom: 15px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+form button {
+  background-color: #00695c;
+  color: white;
+  padding: 10px;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+form button:hover {
+  background-color: #004d40;
+}
+
+/* Área de conteúdo específica */
+#painel {
+  padding: 30px;
+}

@@ -1,0 +1,115 @@
+/* Reset e corpo */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+  }
+  
+  /* Cabeçalho */
+  header {
+    background-color: #00695c;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  /* Barra de navegação */
+  .navbar {
+    background-color: #2e8b57;
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .navbar a:hover {
+    background-color: #1e6847;
+  }
+  
+  /* Área principal */
+  main {
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 160px);
+  }
+  
+  /* Formulário de atividade */
+  form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    max-width: 600px;
+    width: 100%;
+  }
+  
+  form h2 {
+    color: #00695c;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Campos de entrada */
+  form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  form input[type="text"],
+  form input[type="date"],
+  form textarea,
+  form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+    resize: vertical;
+  }
+  
+  /* Botão */
+  form button {
+    background-color: #00695c;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  form button:hover {
+    background-color: #004d40;
+  }
+
+  button {
+    background-color: #00695c;
+    color: white;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    width: 50%;
+    font-size: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  

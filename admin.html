@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel do Professor</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="admin.css">
+  
+</head>
+<body>
+  <script>
+    const users = [
+      { email: "professores@paulo.freire2025.com", senha: "professor.login#001" },
+    ];
+    const user = localStorage.getItem("user");
+    if (!user || !users.some(u => u.email === user)) {
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <nav class="navbar">
+    <a href="index.html">Início</a>
+    <a href="login.html">Painel do Professor</a>
+    <a href="login-aluno.html">Painel do Aluno</a>
+  </nav>
+
+  <header>
+    <h1>Painel do Professor</h1>
+    <p>Acesso restrito</p>
+  </header>
+
+  <main>
+    <section id="painel">
+      <h2>Bem-vindo, professor!</h2>
+      <form id="atividade-form">
+        <input type="text" placeholder="Título da atividade" required><br>
+        <textarea placeholder="Descrição da atividade" required></textarea><br>
+        <select required>
+          <option value="">Selecione a turma</option>
+          <option value="4a">4º Ano A</option>
+          <option value="4b">4º Ano B</option>
+          <option value="5a">5º Ano A</option>
+          <option value="5b">5º Ano B</option>
+          <option value="6a">6º Ano A</option>
+          <option value="6b">6º Ano B</option>
+          <option value="7a">7º Ano A</option>
+          <option value="7b">7º Ano B</option>
+          <option value="7c">7º Ano C</option>
+          <option value="8a">8º Ano A</option>
+          <option value="8b">8º Ano B</option>
+          <option value="8c">8º Ano C</option>
+          <option value="8d">8º Ano D</option>
+          <option value="9a">9º Ano A</option>
+          <option value="9b">9º Ano B</option>
+          <option value="9b">9º Ano C</option>
+        </select><br>
+        <button type="submit">Salvar Atividade</button>
+      </form>
+
+      <h3>Atividades Salvas</h3>
+      <div id="lista-atividades"></div>
+
+      <br>
+      <button onclick="logout()">Sair</button>
+    </section>
+  </main>
+
+  <script>
+    function logout() {
+      localStorage.removeItem("user");
+      window.location.href = "login.html";
+    }
+
+    document.getElementById("atividade-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const titulo = event.target[0].value;
+      const descricao = event.target[1].value;
+      const turma = event.target[2].value;
+
+      const novaAtividade = {
+        id: Date.now(),
+        titulo,
+        descricao,
+        turma
+      };
+
+      const atividades = JSON.parse(localStorage.getItem("atividades") || "[]");
+      atividades.push(novaAtividade);
+      localStorage.setItem("atividades", JSON.stringify(atividades));
+      event.target.reset();
+      mostrarAtividades();
+    });
+
+    function transformarLinks(texto) {
+  const regex = /(https?:\/\/[^\s]+)/g;
+  return texto.replace(regex, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+}
+
+function mostrarAtividades() {
+  const lista = document.getElementById("lista-atividades");
+  lista.innerHTML = "";
+  const atividades = JSON.parse(localStorage.getItem("atividades") || "[]");
+  atividades.forEach(atividade => {
+    const div = document.createElement("div");
+    div.innerHTML = `
+      <strong>${atividade.titulo}</strong><br>
+      ${transformarLinks(atividade.descricao)}<br>
+      Turma: ${atividade.turma}<br>
+      <button onclick="apagarAtividade(${atividade.id})">Apagar</button>
+      <hr>
+    `;
+    lista.appendChild(div);
+  });
+}
+
+
+    function apagarAtividade(id) {
+      const atividades = JSON.parse(localStorage.getItem("atividades") || "[]");
+      const novas = atividades.filter(atividade => atividade.id !== id);
+      localStorage.setItem("atividades", JSON.stringify(novas));
+      mostrarAtividades();
+    }
+
+    // Mostrar ao carregar
+    mostrarAtividades();
+  </script>
+</body>
+</html>

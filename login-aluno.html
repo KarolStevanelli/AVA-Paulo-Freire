@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login do Aluno</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html">Início</a>
+    <a href="login.html">Painel do Professor</a>
+    <a href="login-aluno.html">Painel do Aluno</a>
+  </nav>
+
+  <header>
+    <h1>Login do Aluno</h1>
+  </header>
+
+  <main>
+    <form onsubmit="loginAluno(event)">
+      <input type="text" id="turma" placeholder="Turma (ex: 4a, 7b)" required>
+      <input type="password" id="senha" placeholder="Senha da turma" required>
+      <button type="submit">Entrar</button>
+    </form>
+  </main>
+
+  <script>
+    const turmas = [
+{ turma: "4a", senha: "4a@paulofreire" },
+{ turma: "4b", senha: "4b#2025" },
+{ turma: "5a", senha: "5a%escola2025" },
+{ turma: "5b", senha: "5b@30021" },
+{ turma: "6a", senha: "6a@freire24" },
+{ turma: "6b", senha: "6b#nova2025" },
+{ turma: "7a", senha: "7a%aluno@pf" },
+{ turma: "7b", senha: "7b@educa#25" },
+{ turma: "7c", senha: "7c#formando!" },
+{ turma: "8a", senha: "8a@paulo#2025" },
+{ turma: "8b", senha: "8b#conhecimento!" },
+{ turma: "8c", senha: "8c%freire@estudo" },
+{ turma: "8d", senha: "8d@ensino#top" },
+{ turma: "9a", senha: "9a@finalista25!" },
+{ turma: "9b", senha: "9b#aprendiz@24" },
+{ turma: "9c", senha: "9c@turma9!2025" }
+
+    ];
+
+    function loginAluno(event) {
+      event.preventDefault();
+
+      const turma = document.getElementById("turma").value.toLowerCase();
+      const senha = document.getElementById("senha").value;
+
+      const turmaValida = turmas.find(t => t.turma === turma && t.senha === senha);
+
+      if (turmaValida) {
+        localStorage.setItem("turma", turma);
+        window.location.href = "atividades.html";
+      } else {
+        alert("Turma ou senha incorretos!");
+      }
+    }
+  </script>
+</body>
+</html>

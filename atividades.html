@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Atividades da Turma</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html">Início</a>
+    <a href="login.html">Painel do Professor</a>
+    <a href="login-aluno.html">Painel do Aluno</a>
+  </nav>
+
+  <header>
+    <h1>Atividades da Sua Turma</h1>
+    <button onclick="logout()">Sair</button>
+  </header>
+
+  <main>
+    <div id="atividades"></div>
+  </main>
+
+  <script>
+    const turma = localStorage.getItem("turma");
+  
+    if (!turma) {
+      window.location.href = "login-aluno.html";
+    }
+  
+    function logout() {
+      localStorage.removeItem("turma");
+      window.location.href = "login-aluno.html";
+    }
+  
+    // Função para transformar URLs em links clicáveis
+    function transformarLinks(texto) {
+      const regex = /(https?:\/\/[^\s]+)/g;
+      return texto.replace(regex, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+    }
+  
+    function mostrarAtividades() {
+      const atividades = JSON.parse(localStorage.getItem("atividades") || "[]");
+      const atividadesFiltradas = atividades.filter(a => a.turma === turma);
+  
+      const container = document.getElementById("atividades");
+      container.innerHTML = `<h2>Turma: ${turma.toUpperCase()}</h2><hr>`;
+  
+      if (atividadesFiltradas.length === 0) {
+        container.innerHTML += "<p>Nenhuma atividade disponível para sua turma.</p>";
+        return;
+      }
+  
+      atividadesFiltradas.forEach(a => {
+        container.innerHTML += `
+          <div>
+            <h3>${a.titulo}</h3>
+            <p>${transformarLinks(a.descricao)}</p>
+            <hr>
+          </div>
+        `;
+      });
+    }
+  
+    mostrarAtividades();
+  </script>
+  
+</body>
+</html>

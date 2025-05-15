@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Professor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- BARRA DE NAVEGAÇÃO PADRÃO -->
+  <nav class="navbar">
+    <a href="index.html">Início</a>
+    <a href="login.html">Painel do Professor</a>
+    <a href="login-aluno.html">Painel do Aluno</a>
+  </nav>
+
+  <header>
+    <h1>Login do Professor</h1>
+  </header>
+
+  <main>
+    <form onsubmit="login(event)">
+      <input type="email" id="email" placeholder="E-mail" required>
+      <input type="password" id="senha" placeholder="Senha" required>
+      <button type="submit">Entrar</button>
+    </form>
+  </main>
+
+  <script>
+    function login(event) {
+      event.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+
+      const users = [
+        { email: "professores@paulo.freire2025.com", senha: "professor.login#001" },
+      ];
+
+      const user = users.find(u => u.email === email && u.senha === senha);
+
+      if (user) {
+        localStorage.setItem("user", user.email);
+        window.location.href = "admin.html";
+      } else {
+        alert("E-mail ou senha incorretos!");
+      }
+    }
+  </script>
+</body>
+</html>
